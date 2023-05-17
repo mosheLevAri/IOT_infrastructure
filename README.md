@@ -20,6 +20,9 @@ The infrastructure consists of multiple modules working together to handle diffe
 - The result of the command execution is returned.
 - The Response is prepared and sent back to the client.
 
+![image](https://github.com/mosheLevAri/IOT_infrastructure/assets/95866297/7feafef3-85af-4790-bb68-d0d4bdbacf33)
+
+
 ## Modules
 ### 1. Company Servlet (SQL Database)
 - Purpose: Handles company and product data, storing it in an SQL database.
