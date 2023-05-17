@@ -4,6 +4,7 @@
 ## Overview
 
 This project is a generic IoT infrastructure that provides a scalable and flexible solution for managing IoT devices and data.It utilizes various design patterns such as Factory, Singleton, and Observer, along with solid principles and object-oriented programming concepts.
+
 The infrastructure consists of multiple modules working together to handle different aspects of IoT operations. it includes components such as a gateway server, request handler, command factory, and a thread pool for task execution. It utilizes two databases, SQL and MongoDB, to store and retrieve data.
 
 
@@ -74,29 +75,29 @@ The infrastructure consists of multiple modules working together to handle diffe
 	- Detects changes in the module directory and dynamically loads new functionality into the Singleton 		Command Factory.
 
 ## Flow
-The Company Servlet receives company and product data and stores it in an SQL database.
-The Company and Data Servlet send requests to the Gateway Server.
-The Gateway Server forwards the requests to the Request Handler.
-The Request Handler determines the appropriate command to execute.
-The Singleton Command Factory creates an instance of the selected command.
-The executed command interacts with the MongoDB module for data storage and retrieval.
-The Thread Pool manages the execution of commands, allowing for concurrent processing.
-Each command is submitted to the Thread Pool for execution.
-The executed tasks may produce results, which are returned as Future objects.
-The Request Handler collects the results and prepares the response to be sent back to the client.
+- The Company Servlet receives company and product data and stores it in an SQL database.
+- The Company and Data Servlet send requests to the Gateway Server.
+- The Gateway Server forwards the requests to the Request Handler.
+- The Request Handler determines the appropriate command to execute.
+- The Singleton Command Factory creates an instance of the selected command.
+- The executed command interacts with the MongoDB module for data storage and retrieval.
+- The Thread Pool manages the execution of commands, allowing for concurrent processing.
+- Each command is submitted to the Thread Pool for execution.
+- The executed tasks may produce results, which are returned as Future objects.
+- The Request Handler collects the results and prepares the response to be sent back to the client.
 
 ## Usage
 To utilize the IoT infrastructure, follow these steps:
 
-Set up a Tomcat server and deploy the project.
-Configure the Gateway Server (GateWay class) to listen for incoming HTTP requests.
-Implement specific command methods in the Basic Factory Methods class for different IoT operations.
-Register the command methods in the initBasicMethodsToFactory method of the Basic Factory Methods class.
-Start the server and send HTTP requests to the appropriate endpoints, including the relevant data and company information.
-The Gateway Server will forward the requests to the Request Handler, which will execute the corresponding commands.
-The executed commands will interact with the MongoDB module to store and retrieve data.
-The SQL database will be updated by the Company Servlet with company and product data.
-The response will be generated based on the executed commands and returned
+- Set up a Tomcat server and deploy the project.
+- Configure the Gateway Server (GateWay class) to listen for incoming HTTP requests.
+- Implement specific command methods in the Basic Factory Methods class for different IoT operations.
+- Register the command methods in the initBasicMethodsToFactory method of the Basic Factory Methods class.
+- Start the server and send HTTP requests to the appropriate endpoints, including the relevant data and company information.
+- The Gateway Server will forward the requests to the Request Handler, which will execute the corresponding commands.
+- The executed commands will interact with the MongoDB module to store and retrieve data.
+- The SQL database will be updated by the Company Servlet with company and product data.
+- The response will be generated based on the executed commands and returned
 
 
 
