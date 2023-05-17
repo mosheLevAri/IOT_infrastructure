@@ -75,16 +75,16 @@ The infrastructure consists of multiple modules working together to handle diffe
 	- Detects changes in the module directory and dynamically loads new functionality into the Singleton 		Command Factory.
 
 ## Flow
-- The Company Servlet receives company and product data and stores it in an SQL database.
-- The Company and Data Servlet send requests to the Gateway Server.
-- The Gateway Server forwards the requests to the Request Handler.
-- The Request Handler determines the appropriate command to execute.
+- The Gateway Servlet receives requests from clients through HTTP, UDP, or TCP protocols.
+- The Gateway Servlet parses the request into JSON format.
+- The parsed request is added as a new task to the Thread Pool.
+- The Thread Pool assigns the task to a worker thread for execution.
+- The Request Handler analyzes the request and maps it to the corresponding command in the Singleton Command 	Factory.
 - The Singleton Command Factory creates an instance of the selected command.
 - The executed command interacts with the MongoDB module for data storage and retrieval.
-- The Thread Pool manages the execution of commands, allowing for concurrent processing.
-- Each command is submitted to the Thread Pool for execution.
-- The executed tasks may produce results, which are returned as Future objects.
-- The Request Handler collects the results and prepares the response to be sent back to the client.
+- The command performs specific operations based on the requested function, executing I/O operations on the MongoDB database.
+- The result of the command execution is returned.
+- The Response is prepared and sent back to the client.
 
 ## Usage
 To utilize the IoT infrastructure, follow these steps:
