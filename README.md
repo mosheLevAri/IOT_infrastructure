@@ -8,6 +8,18 @@ This project is a generic IoT infrastructure that provides a scalable and flexib
 The infrastructure consists of multiple modules working together to handle different aspects of IoT operations. it includes components such as a gateway server, request handler, command factory, and a thread pool for task execution. It utilizes two databases, SQL and MongoDB, to store and retrieve data.
 
 
+## Flow
+- The Gateway Servlet receives requests from clients through HTTP, UDP, or TCP protocols.
+- The Gateway Servlet parses the request into JSON format.
+- The parsed request is added as a new task to the Thread Pool.
+- The Thread Pool assigns the task to a worker thread for execution.
+- The Request Handler analyzes the request and maps it to the corresponding command in the Singleton Command 	Factory.
+- The Singleton Command Factory creates an instance of the selected command.
+- The executed command interacts with the MongoDB module for data storage and retrieval.
+- The command performs specific operations based on the requested function, executing I/O operations on the MongoDB database.
+- The result of the command execution is returned.
+- The Response is prepared and sent back to the client.
+
 ## Modules
 ### 1. Company Servlet (SQL Database)
 - Purpose: Handles company and product data, storing it in an SQL database.
@@ -74,17 +86,7 @@ The infrastructure consists of multiple modules working together to handle diffe
 	- Implements a module directory monitor using the Observer pattern.
 	- Detects changes in the module directory and dynamically loads new functionality into the Singleton 		Command Factory.
 
-## Flow
-- The Gateway Servlet receives requests from clients through HTTP, UDP, or TCP protocols.
-- The Gateway Servlet parses the request into JSON format.
-- The parsed request is added as a new task to the Thread Pool.
-- The Thread Pool assigns the task to a worker thread for execution.
-- The Request Handler analyzes the request and maps it to the corresponding command in the Singleton Command 	Factory.
-- The Singleton Command Factory creates an instance of the selected command.
-- The executed command interacts with the MongoDB module for data storage and retrieval.
-- The command performs specific operations based on the requested function, executing I/O operations on the MongoDB database.
-- The result of the command execution is returned.
-- The Response is prepared and sent back to the client.
+
 
 ## Usage
 To utilize the IoT infrastructure, follow these steps:
