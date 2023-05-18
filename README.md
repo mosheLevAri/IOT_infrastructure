@@ -24,7 +24,8 @@ The infrastructure consists of multiple modules working together to handle diffe
 
 
 ## Modules
-### 1. Company Servlet (SQL Database)
+### 1. Company Servlet
+
 - Purpose: Handles company and product data, storing it in an SQL database.
 
 - Features:
